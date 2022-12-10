@@ -72,7 +72,6 @@ return require("packer").startup(function(use)
     -- allow CMP recommend text from the current buffer
     use("hrsh7th/cmp-buffer")
 
-    -- LuaSnip
     -- snippets engine written entirely in lua
     use("L3MON4D3/LuaSnip")
     
@@ -81,6 +80,29 @@ return require("packer").startup(function(use)
 
     -- collection of useful snippets from different languages
     use("rafamadriz/friendly-snippets")
+
+    -- Mason
+    -- managing and installing LSP servers, linters and formatters
+    use("williamboman/mason.nvim")
+
+    -- close some gaps between mason.nvim and lspconfig
+    use("williamboman/mason-lspconfig.nvim")
+
+    -- allow configure LSP servers
+    use("hrsh7th/cmp-nvim-lsp")
+
+    -- enhanced UI to LSP experience
+    use({ "glepnir/lspsaga.nvim", branch = "main" })
+
+    -- further functionality to TypeScript server
+    use("jose-elias-alvarez/typescript.nvim")
+
+    -- add VSCode icons to autompletion window
+    use("onsails/lspkind.nvim")
+
+    -- formatting and linting
+    use("jose-elias-alvarez/null-ls.nvim")
+    use("jayp0521/mason-null-ls.nvim")
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
