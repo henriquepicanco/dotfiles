@@ -51,3 +51,7 @@ keymap.set("x", "K", ":move '<+2<CR>gv-gv") -- move the actual selection to the 
 
 -- vim maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
+
+-- tabs
+keymap.set("n", "<leader>tn", ":tabnew<CR>") -- open a new tab
+keymap.set("n", "<leader>tc", ":bdelete<CR>") -- close current tab

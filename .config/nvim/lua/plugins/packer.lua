@@ -50,8 +50,17 @@ return require("packer").startup(function(use)
     use("numToStr/Comment.nvim")
 
     -- Lualine
-    -- Blazing fast and easy to configure statusline written in lua
+    -- blazing fast and easy to configure statusline written in lua
     use("nvim-lualine/lualine.nvim")
+    
+    -- Telescope
+    -- extendable fuzzy finder over lists
+    use("nvim-telescope/telescope.nvim")
+    use("nvim-telescope/telescope-file-browser.nvim")
+
+    -- nvim-web-icons
+    -- a fork fo vim-devicons in lua - provides the same icons and colors for each icon
+    use("nvim-tree/nvim-web-devicons")
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
