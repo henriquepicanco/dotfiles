@@ -44,3 +44,10 @@ keymap.set("x", "J", ":move '>+1<CR>gv-gv") -- move the actual selection to the 
 keymap.set("x", "K", ":move '<+2<CR>gv-gv") -- move the actual selection to the one line bottom
 -- keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv")
 -- keymap.set("x", "<A-k>", ":move '<+2<CR>gv-gv")
+
+------------------------------
+-- Plugin keybinds
+------------------------------
+
+-- vim maximizer
+keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization

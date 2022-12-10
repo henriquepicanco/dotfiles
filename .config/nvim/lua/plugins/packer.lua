@@ -29,14 +29,25 @@ if not packer_status then
 end
 
 return require("packer").startup(function(use)
+    -- packer.nvim
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
 
+    -- plenary.nvim
     -- lua functions require by many other plugins
     use("nvim-lua/plenary.nvim")
 
+    -- tokyonight.nvim
     -- dark and light neovim theme ported from TokyoNight from Visual Studio Code
     use("folke/tokyonight.nvim")
+
+    -- vim maximizer
+    -- maximiez and restores current window
+    use("szw/vim-maximizer")
+
+    -- Comment.nvim
+    -- commenting plugin for Neovim
+    use("numToStr/Comment.nvim")
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
