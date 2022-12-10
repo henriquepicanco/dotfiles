@@ -29,80 +29,58 @@ if not packer_status then
 end
 
 return require("packer").startup(function(use)
-    -- packer.nvim
-    -- Packer can manage itself
-    use("wbthomason/packer.nvim")
+    -- Packer
+    use("wbthomason/packer.nvim") -- Packer can manage itself
 
-    -- plenary.nvim
-    -- lua functions require by many other plugins
-    use("nvim-lua/plenary.nvim")
+    -- Plenary
+    use("nvim-lua/plenary.nvim") -- lua functions require by many other plugins
 
-    -- tokyonight.nvim
-    -- dark and light neovim theme ported from TokyoNight from Visual Studio Code
-    use("folke/tokyonight.nvim")
+    -- Colorschemes
+    use("folke/tokyonight.nvim") -- dark and light neovim theme ported from TokyoNight from Visual Studio Code
 
     -- vim maximizer
-    -- maximiez and restores current window
-    use("szw/vim-maximizer")
+    use("szw/vim-maximizer") -- maximizes and restores current window
 
     -- Comment.nvim
-    -- commenting plugin for Neovim
-    use("numToStr/Comment.nvim")
+    use("numToStr/Comment.nvim") -- commenting plugin for Neovim
 
     -- Lualine
-    -- blazing fast and easy to configure statusline written in lua
-    use("nvim-lualine/lualine.nvim")
+    use("nvim-lualine/lualine.nvim") -- blazing fast and easy to configure statusline written in lua
     
     -- Telescope
-    -- extendable fuzzy finder over lists
-    use("nvim-telescope/telescope.nvim")
-    use("nvim-telescope/telescope-file-browser.nvim")
-
-    -- nvim-web-icons
-    -- a fork fo vim-devicons in lua - provides the same icons and colors for each icon
-    use("nvim-tree/nvim-web-devicons")
+    -- Attention: installation of ripgrep is required!
+    -- In Ubuntu, run the following command: $ sudo apt install ripgrep
+    use("nvim-telescope/telescope.nvim") -- extendable fuzzy finder over lists
+    use("nvim-telescope/telescope-file-browser.nvim") -- extension to see files and folder on Telescope
+    use("nvim-tree/nvim-web-devicons") -- a fork fo vim-devicons in lua - provides the same icons and colors for each icon
 
     -- CMP
-    -- this will provide autocompletion
-    use("hrsh7th/nvim-cmp")
-
-    -- allow CMP recommend different directories for files
-    use("hrsh7th/cmp-path")
-
-    -- allow CMP recommend text from the current buffer
-    use("hrsh7th/cmp-buffer")
-
-    -- snippets engine written entirely in lua
-    use("L3MON4D3/LuaSnip")
-    
-    -- allow nvim-cmp to show snippets in autocompletion
-    use("saadparwaiz1/cmp_luasnip")
-
-    -- collection of useful snippets from different languages
-    use("rafamadriz/friendly-snippets")
+    use("hrsh7th/nvim-cmp") -- this will provide autocompletion
+    use("hrsh7th/cmp-path") -- allow CMP recommend different directories for files
+    use("hrsh7th/cmp-buffer") -- allow CMP recommend text from the current buffer
+    use("L3MON4D3/LuaSnip") -- snippets engine written entirely in lua
+    use("saadparwaiz1/cmp_luasnip") -- allow nvim-cmp to show snippets in autocompletion
+    use("rafamadriz/friendly-snippets") -- collection of useful snippets from different languages
 
     -- Mason
-    -- managing and installing LSP servers, linters and formatters
-    use("williamboman/mason.nvim")
+    use("williamboman/mason.nvim") -- managing and installing LSP servers, linters and formatters
+    use("williamboman/mason-lspconfig.nvim") -- close some gaps between mason.nvim and lspconfig
+    use("hrsh7th/cmp-nvim-lsp") -- allow configure LSP servers
+    use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced UI to LSP experience
+    use("jose-elias-alvarez/typescript.nvim") -- further functionality to TypeScript server
+    use("onsails/lspkind.nvim") -- add VSCode icons to autompletion window
+    use("jose-elias-alvarez/null-ls.nvim") -- formatting and linting
+    use("jayp0521/mason-null-ls.nvim") -- formatting and linting
 
-    -- close some gaps between mason.nvim and lspconfig
-    use("williamboman/mason-lspconfig.nvim")
-
-    -- allow configure LSP servers
-    use("hrsh7th/cmp-nvim-lsp")
-
-    -- enhanced UI to LSP experience
-    use({ "glepnir/lspsaga.nvim", branch = "main" })
-
-    -- further functionality to TypeScript server
-    use("jose-elias-alvarez/typescript.nvim")
-
-    -- add VSCode icons to autompletion window
-    use("onsails/lspkind.nvim")
-
-    -- formatting and linting
-    use("jose-elias-alvarez/null-ls.nvim")
-    use("jayp0521/mason-null-ls.nvim")
+    -- Treesitter
+    -- Attention: installation of a C compiler is required!
+    -- In Ubuntu, run the following command: ``$ sudo apt install g++``
+    -- for the configurations of this repository, it's also need to install "tree-sitter-cli" via NPM
+    -- to install, use ``$ npm install tree-sitter-cli``
+    use({ "nvim-treesitter/nvim-treesitter", run = function() require("nvim-treesitter.install").update({ with_sync = true }) end }) -- tree-sitter interface and basic functionality
+    use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }) -- rainbow parentheses using tree-sitter
+    use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- use treesitter to autoclose and autorename HTML tags
+    use({ "windwp/nvim-autopairs", after = "nvim-treesitter" }) -- powerful autopair plguin for neovim thar supports multiple characters
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
