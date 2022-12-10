@@ -91,6 +91,9 @@ return require("packer").startup(function(use)
     -- Illuminate
     use("RRethy/vim-illuminate") -- highlight other uses of the word under the cursor using LSP, Tree-sitter or regex matching
 
+    -- Toggleterm
+    use("akinsho/toggleterm.nvim") -- plugin to persist and toggle multiple terminal during and editing session
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
