@@ -82,6 +82,9 @@ return require("packer").startup(function(use)
     use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- use treesitter to autoclose and autorename HTML tags
     use({ "windwp/nvim-autopairs", after = "nvim-treesitter" }) -- powerful autopair plguin for neovim thar supports multiple characters
 
+    -- Git
+    use("lewis6991/gitsigns.nvim") -- super fast git decorations implemented purely in lua/teal
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
