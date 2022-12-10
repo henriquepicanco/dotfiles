@@ -62,6 +62,26 @@ return require("packer").startup(function(use)
     -- a fork fo vim-devicons in lua - provides the same icons and colors for each icon
     use("nvim-tree/nvim-web-devicons")
 
+    -- CMP
+    -- this will provide autocompletion
+    use("hrsh7th/nvim-cmp")
+
+    -- allow CMP recommend different directories for files
+    use("hrsh7th/cmp-path")
+
+    -- allow CMP recommend text from the current buffer
+    use("hrsh7th/cmp-buffer")
+
+    -- LuaSnip
+    -- snippets engine written entirely in lua
+    use("L3MON4D3/LuaSnip")
+    
+    -- allow nvim-cmp to show snippets in autocompletion
+    use("saadparwaiz1/cmp_luasnip")
+
+    -- collection of useful snippets from different languages
+    use("rafamadriz/friendly-snippets")
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
