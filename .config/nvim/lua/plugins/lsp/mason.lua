@@ -30,13 +30,17 @@ mason_lspconfig.setup({
         "sumneko_lua",
         "emmet_ls",
     },
+    -- set automatic installation for the above packages
+    automatic_installation = true,
 })
 
 mason_null_ls.setup({
     -- list of formatters and linters for mason to install
     ensure_installed = {
-        "prettier",
         "stylua",
         "eslint_d",
+        "prettier",
     },
+    -- set automatic installation for the above packages
+    automatic_installation = true,
 })

@@ -2,16 +2,16 @@ local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    })
-    print("Installing Packer -- Close and reopen Neovim to proceed")
-    vim.cmd([[packeradd packer.nvim]])
+	PACKER_BOOTSTRAP = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+	print("Installing Packer -- Close and reopen Neovim to proceed")
+	vim.cmd([[packeradd packer.nvim]])
 end
 
 -- Autocommand that reload Neovim whenever you save the packer.lua file
@@ -24,86 +24,98 @@ vim.cmd([[
 
 local packer_status = pcall(require, "packer")
 if not packer_status then
-    print("Packer is not installed")
-    return
+	print("Packer is not installed")
+	return
 end
 
 return require("packer").startup(function(use)
-    -- Packer
-    use("wbthomason/packer.nvim") -- Packer can manage itself
+	-- Packer
+	use("wbthomason/packer.nvim") -- Packer can manage itself
 
-    -- Plenary
-    use("nvim-lua/plenary.nvim") -- lua functions require by many other plugins
+	-- Plenary
+	use("nvim-lua/plenary.nvim") -- lua functions require by many other plugins
 
-    -- Colorschemes
-    use("folke/tokyonight.nvim") -- dark and light neovim theme ported from TokyoNight from Visual Studio Code
+	-- Colorschemes
+	use("folke/tokyonight.nvim") -- dark and light neovim theme ported from TokyoNight from Visual Studio Code
 
-    -- vim maximizer
-    use("szw/vim-maximizer") -- maximizes and restores current window
+	-- vim maximizer
+	use("szw/vim-maximizer") -- maximizes and restores current window
 
-    -- Comment.nvim
-    use("numToStr/Comment.nvim") -- commenting plugin for Neovim
+	-- Comment.nvim
+	use("numToStr/Comment.nvim") -- commenting plugin for Neovim
 
-    -- Lualine
-    use("nvim-lualine/lualine.nvim") -- blazing fast and easy to configure statusline written in lua
-    
-    -- Telescope
-    -- Attention: installation of ripgrep is required!
-    -- In Ubuntu, run the following command: $ sudo apt install ripgrep
-    use("nvim-telescope/telescope.nvim") -- extendable fuzzy finder over lists
-    use("nvim-telescope/telescope-file-browser.nvim") -- extension to see files and folder on Telescope
-    use("nvim-tree/nvim-web-devicons") -- a fork fo vim-devicons in lua - provides the same icons and colors for each icon
+	-- Lualine
+	use("nvim-lualine/lualine.nvim") -- blazing fast and easy to configure statusline written in lua
 
-    -- CMP
-    use("hrsh7th/nvim-cmp") -- this will provide autocompletion
-    use("hrsh7th/cmp-path") -- allow CMP recommend different directories for files
-    use("hrsh7th/cmp-buffer") -- allow CMP recommend text from the current buffer
-    use("L3MON4D3/LuaSnip") -- snippets engine written entirely in lua
-    use("saadparwaiz1/cmp_luasnip") -- allow nvim-cmp to show snippets in autocompletion
-    use("rafamadriz/friendly-snippets") -- collection of useful snippets from different languages
+	-- Telescope
+	-- Attention: installation of ripgrep  and fd-find is required!
+	-- In Ubuntu, run the following command: `` $ sudo apt install ripgrep fd-find``
+	use("nvim-telescope/telescope.nvim") -- extendable fuzzy finder over lists
+	use("nvim-telescope/telescope-file-browser.nvim") -- extension to see files and folder on Telescope
+	use("nvim-tree/nvim-web-devicons") -- a fork fo vim-devicons in lua - provides the same icons and colors for each icon
 
-    -- Mason
-    use("williamboman/mason.nvim") -- managing and installing LSP servers, linters and formatters
-    use("williamboman/mason-lspconfig.nvim") -- close some gaps between mason.nvim and lspconfig
-    use("hrsh7th/cmp-nvim-lsp") -- allow configure LSP servers
-    use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced UI to LSP experience
-    use("jose-elias-alvarez/typescript.nvim") -- further functionality to TypeScript server
-    use("onsails/lspkind.nvim") -- add VSCode icons to autompletion window
-    use("jose-elias-alvarez/null-ls.nvim") -- formatting and linting
-    use("jayp0521/mason-null-ls.nvim") -- formatting and linting
+	-- CMP
+	use("hrsh7th/nvim-cmp") -- this will provide autocompletion
+	use("hrsh7th/cmp-path") -- allow CMP recommend different directories for files
+	use("hrsh7th/cmp-buffer") -- allow CMP recommend text from the current buffer
+	use("L3MON4D3/LuaSnip") -- snippets engine written entirely in lua
+	use("saadparwaiz1/cmp_luasnip") -- allow nvim-cmp to show snippets in autocompletion
+	use("rafamadriz/friendly-snippets") -- collection of useful snippets from different languages
 
-    -- Treesitter
-    -- Attention: installation of a C compiler is required!
-    -- In Ubuntu, run the following command: ``$ sudo apt install g++``
-    -- for the configurations of this repository, it's also need to install "tree-sitter-cli" via NPM
-    -- to install, use ``$ npm install tree-sitter-cli``
-    use({ "nvim-treesitter/nvim-treesitter", run = function() require("nvim-treesitter.install").update({ with_sync = true }) end }) -- tree-sitter interface and basic functionality
-    use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }) -- rainbow parentheses using tree-sitter
-    use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- use treesitter to autoclose and autorename HTML tags
-    use({ "windwp/nvim-autopairs", after = "nvim-treesitter" }) -- powerful autopair plguin for neovim thar supports multiple characters
+	-- Mason
+	-- Attention: installation of unzip is required!
+	-- In Ubuntu, run the following command: ``$ sudo apt install unzip``
+	use("williamboman/mason.nvim") -- managing and installing LSP servers, linters and formatters
+	use("williamboman/mason-lspconfig.nvim") -- close some gaps between mason.nvim and lspconfig
+	use("hrsh7th/cmp-nvim-lsp") -- allow configure LSP servers
+	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced UI to LSP experience
+	use("jose-elias-alvarez/typescript.nvim") -- further functionality to TypeScript server
+	use("onsails/lspkind.nvim") -- add VSCode icons to autompletion window
+	use("jose-elias-alvarez/null-ls.nvim") -- formatting and linting
+	use("jayp0521/mason-null-ls.nvim") -- formatting and linting
 
-    -- Git
-    use("lewis6991/gitsigns.nvim") -- super fast git decorations implemented purely in lua/teal
+	-- Treesitter
+	-- Attention: installation of a C compiler is required!
+	-- In Ubuntu, run the following command: ``$ sudo apt install g++``
+	-- for the configurations of this repository, it's also need to install "tree-sitter-cli" via NPM
+	-- to install, use ``$ npm install tree-sitter-cli``
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
+	}) -- tree-sitter interface and basic functionality
+	use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }) -- rainbow parentheses using tree-sitter
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- use treesitter to autoclose and autorename HTML tags
+	use({ "windwp/nvim-autopairs", after = "nvim-treesitter" }) -- powerful autopair plguin for neovim thar supports multiple characters
 
-    -- Bufferline
-    use({"akinsho/bufferline.nvim", tag="v3.*"}) -- a snazzy buffer line (with tabpage integration for neovim
+	-- Git
+	use("lewis6991/gitsigns.nvim") -- super fast git decorations implemented purely in lua/teal
 
-    -- Illuminate
-    use("RRethy/vim-illuminate") -- highlight other uses of the word under the cursor using LSP, Tree-sitter or regex matching
+	-- Bufferline
+	use({ "akinsho/bufferline.nvim", tag = "v3.*" }) -- a snazzy buffer line (with tabpage integration for neovim
 
-    -- Toggleterm
-    use("akinsho/toggleterm.nvim") -- plugin to persist and toggle multiple terminal during and editing session
+	-- Illuminate
+	use("RRethy/vim-illuminate") -- highlight other uses of the word under the cursor using LSP, Tree-sitter or regex matching
 
-    -- Indent Blankline
-    use("lukas-reineke/indent-blankline.nvim") -- indentation guides to all lines (including emtpy lines)
+	-- Toggleterm
+	use("akinsho/toggleterm.nvim") -- plugin to persist and toggle multiple terminal during and editing session
 
-    -- Markdown Preview
-    use({"iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end}) -- markdown previewer in browser with synchronised scrolling and flexible configuration
+	-- Indent Blankline
+	use("lukas-reineke/indent-blankline.nvim") -- indentation guides to all lines (including emtpy lines)
 
-    -- Impatient
-    use("lewis6991/impatient.nvim") -- speed up loading lua modules to improve startup time
+	-- Markdown Preview
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	}) -- markdown previewer in browser with synchronised scrolling and flexible configuration
 
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
-    end
+	-- Impatient
+	use("lewis6991/impatient.nvim") -- speed up loading lua modules to improve startup time
+
+	if PACKER_BOOTSTRAP then
+		require("packer").sync()
+	end
 end)
