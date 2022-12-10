@@ -88,6 +88,9 @@ return require("packer").startup(function(use)
     -- Bufferline
     use({"akinsho/bufferline.nvim", tag="v3.*"}) -- a snazzy buffer line (with tabpage integration for neovim
 
+    -- Illuminate
+    use("RRethy/vim-illuminate") -- highlight other uses of the word under the cursor using LSP, Tree-sitter or regex matching
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
