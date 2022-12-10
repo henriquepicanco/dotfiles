@@ -97,6 +97,9 @@ return require("packer").startup(function(use)
     -- Indent Blankline
     use("lukas-reineke/indent-blankline.nvim") -- indentation guides to all lines (including emtpy lines)
 
+    -- Markdown Preview
+    use({"iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end}) -- markdown previewer in browser with synchronised scrolling and flexible configuration
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
