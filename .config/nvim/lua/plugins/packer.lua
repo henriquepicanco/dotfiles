@@ -49,6 +49,10 @@ return require("packer").startup(function(use)
     -- commenting plugin for Neovim
     use("numToStr/Comment.nvim")
 
+    -- Lualine
+    -- Blazing fast and easy to configure statusline written in lua
+    use("nvim-lualine/lualine.nvim")
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
