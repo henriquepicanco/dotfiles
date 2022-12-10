@@ -85,6 +85,9 @@ return require("packer").startup(function(use)
     -- Git
     use("lewis6991/gitsigns.nvim") -- super fast git decorations implemented purely in lua/teal
 
+    -- Bufferline
+    use({"akinsho/bufferline.nvim", tag="v3.*"}) -- a snazzy buffer line (with tabpage integration for neovim
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
