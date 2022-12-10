@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/henrique/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/henrique/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/home/henrique/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -241,9 +246,9 @@ time([[Defining packer_plugins]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd nvim-autopairs ]]
 vim.cmd [[ packadd nvim-ts-autotag ]]
 vim.cmd [[ packadd nvim-ts-rainbow ]]
-vim.cmd [[ packadd nvim-autopairs ]]
 time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false

@@ -94,6 +94,9 @@ return require("packer").startup(function(use)
     -- Toggleterm
     use("akinsho/toggleterm.nvim") -- plugin to persist and toggle multiple terminal during and editing session
 
+    -- Indent Blankline
+    use("lukas-reineke/indent-blankline.nvim") -- indentation guides to all lines (including emtpy lines)
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
