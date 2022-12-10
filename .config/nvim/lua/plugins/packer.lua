@@ -100,6 +100,9 @@ return require("packer").startup(function(use)
     -- Markdown Preview
     use({"iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end}) -- markdown previewer in browser with synchronised scrolling and flexible configuration
 
+    -- Impatient
+    use("lewis6991/impatient.nvim") -- speed up loading lua modules to improve startup time
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
