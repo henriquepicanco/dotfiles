@@ -52,6 +52,9 @@ return require("packer").startup(function(use)
 	-- In Ubuntu, run the following command: `` $ sudo apt install ripgrep fd-find``
 	use("nvim-telescope/telescope.nvim") -- extendable fuzzy finder over lists
 	use("nvim-telescope/telescope-file-browser.nvim") -- extension to see files and folder on Telescope
+
+	-- Nvim-tree
+	use("nvim-tree/nvim-tree.lua") -- a file explorer for neovim written in lua
 	use("nvim-tree/nvim-web-devicons") -- a fork fo vim-devicons in lua - provides the same icons and colors for each icon
 
 	-- CMP
