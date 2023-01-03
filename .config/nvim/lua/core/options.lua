@@ -1,4 +1,5 @@
 local opt = vim.opt --for conciseness
+local api = vim.api --for conciseness
 
 -- line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
@@ -41,3 +42,6 @@ opt.iskeyword:append("-") -- consider string-string as whole word
 
 -- indent blankline
 opt.list = true
+
+api.nvim_set_hl(0, "Normal", { bg = "none" })
+api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

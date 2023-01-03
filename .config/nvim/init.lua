@@ -1,21 +1,22 @@
-require "plugins.impatient"
-require "core.colorscheme"
-require "core.keymaps"
-require "core.options"
-require "plugins.packer"
-require "plugins.comment"
-require "plugins.lualine"
-require "plugins.telescope"
-require "plugins.nvim-cmp"
-require "plugins.lsp.mason"
-require "plugins.lsp.lspsaga"
-require "plugins.lsp.lspconfig"
-require "plugins.lsp.null-ls"
-require "plugins.treesitter"
-require "plugins.autopairs"
-require "plugins.gitsigns"
-require "plugins.bufferline"
-require "plugins.illuminate"
-require "plugins.toggleterm"
-require "plugins.indent-blankline"
-require "plugins.markdown-preview"
+require("plugins.impatient")
+require("core.colorscheme")
+require("core.keymaps")
+require("core.options")
+require("plugins.packer")
+require("plugins.comment")
+require("plugins.lualine")
+require("plugins.telescope")
+require("plugins.nvim-cmp")
+require("plugins.lsp.mason")
+require("plugins.lsp.lspsaga")
+require("plugins.lsp.lspconfig")
+require("plugins.lsp.null-ls")
+require("plugins.treesitter")
+require("plugins.autopairs")
+require("plugins.gitsigns")
+require("plugins.bufferline")
+require("plugins.illuminate")
+require("plugins.toggleterm")
+require("plugins.indent-blankline")
+require("plugins.markdown-preview")
+require("plugins.tokyonight")
