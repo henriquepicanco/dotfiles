@@ -63,6 +63,9 @@ keymap.set("n", "<leader>tc", ":bdelete<CR>") -- close current tab
 keymap.set("t", "<ESC>", [[<C-\><C-n>]]) -- exit terminal mode in terminal window
 keymap.set("t", "jk", [[<C-\><C-n>]]) -- exit terminal mode in terminal window
 keymap.set("t", "<C-h>", [[<C-\><C-n><C-W>h]]) -- change to terminal or buffer at left
-keymap.set("t", "<C-j>", [[<C-\><C-n><C-W>j]]) -- change to terminal or buffer at bottom 
-keymap.set("t", "<C-k>", [[<C-\><C-n><C-W>k]]) -- change to terminal or buffer at top 
-keymap.set("t", "<C-l>", [[<C-\><C-n><C-W>l]]) -- change to terminal or buffer at right 
+keymap.set("t", "<C-j>", [[<C-\><C-n><C-W>j]]) -- change to terminal or buffer at bottom
+keymap.set("t", "<C-k>", [[<C-\><C-n><C-W>k]]) -- change to terminal or buffer at top
+keymap.set("t", "<C-l>", [[<C-\><C-n><C-W>l]]) -- change to terminal or buffer at right
+
+-- nvim-tree
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- open and close nvim-tree
