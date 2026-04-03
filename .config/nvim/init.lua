@@ -1,3 +1,7 @@
 require("options")
 require("colorscheme")
-
+require("lsp")
+require("plugins")
+--require("plugins.nvim-autopairs")
+--require("plugins.blink-cmp")
+--require("plugins.lsp")

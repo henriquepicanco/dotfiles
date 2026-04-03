@@ -29,7 +29,10 @@ local options = {
   scrolloff = 8,
   sidescrolloff = 8,
   guifont = "monospace:h17",
-  whichwrap = "bs<>[]hl"
+  whichwrap = "bs<>[]hl",
+  autocomplete = true,
+  filetype = "on",
+  syntax = "on"
 }
 
 for key, value in pairs(options) do
@@ -43,3 +46,12 @@ vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.g.maploader = " "
 vim.g.maplocalleader = " "
 
+-- wsl clipboard
+if vim.fn.has("wsl") == 1 then
+  vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+      vim.fn.system("clip.exe", vim.fn.getreg('"'))
+    end,
+  })
+  vim.opt.clipboard = "unnamedplus"
+end
