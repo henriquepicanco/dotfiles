@@ -1,4 +1,5 @@
 require("options")
-require("colorscheme")
 require("lsp")
-require("plugins")
+require("ui")
+require("completion")
+require("colorscheme")

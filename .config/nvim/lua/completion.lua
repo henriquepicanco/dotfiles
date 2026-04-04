@@ -1,65 +1,8 @@
--- ===============
--- Install plugins
--- ===============
-
 vim.pack.add({
-  { src = "https://github.com/windwp/nvim-autopairs" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/mason-org/mason.nvim" },
-  { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
   { src = "https://github.com/saghen/blink.cmp" },
   { src = "https://github.com/L3MON4D3/LuaSnip" },
-  {
-    src = "https://github.com/nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate"
-  },
   { src = "https://github.com/rafamadriz/friendly-snippets" },
 })
-
--- ==============
--- nvim-autopairs
--- ==============
-
-require("nvim-autopairs").setup({
-  check_ts = true,
-  disable_filetype = { "TelescopePrompt" }
-})
-
--- =====
--- mason
--- =====
-
-require("mason").setup()
-
--- ===============
--- mason-lspconfig
--- ===============
-
-local mason_lsp = require("mason-lspconfig")
-mason_lsp.setup({
-  ensure_installed = {
-    "lua_ls",
-    "ts_ls",
-    "astro",
-    "html",
-    "cssls",
-    "emmet_ls"
-  },
-})
-
--- ==============
--- nvim-lspconfig
--- ==============
-
-require("lspconfig")
-
-for _, server in ipairs(mason_lsp.get_installed_servers()) do
-  vim.lsp.config(server, {
-    settings = {},
-  })
-
-  vim.lsp.enable(server)
-end
 
 -- =======
 -- luasnip
@@ -138,27 +81,3 @@ require("blink.cmp").setup({
     }
   }
 })
-
--- ===============
--- nvim-treesitter
--- ===============
-
-require("nvim-treesitter").install {
-  "lua",
-  "php",
-  "astro",
-  "blade",
-  "html",
-  "css",
-  "javascript",
-  "typescript",
-  "json",
-}
-
--- =============
--- nvim-snippets
--- =============
-
---require("snippets").setup({
---  friendly_snippets = true
---})

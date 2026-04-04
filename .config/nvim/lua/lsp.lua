@@ -1,3 +1,13 @@
+vim.pack.add({
+  { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/mason-org/mason.nvim" },
+  { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+})
+
+-- ==============
+-- Language setup
+-- ==============
+
 -- Lua
 vim.lsp.config("lua_ls", {
   settings = {
@@ -35,6 +45,38 @@ vim.lsp.config("cssls", {
     less = { validate = true },
   },
 })
+
+-- =======
+-- Plugins
+-- =======
+
+require("mason").setup()
+
+local mason_lsp = require("mason-lspconfig")
+mason_lsp.setup({
+  ensure_installed = {
+    "lua_ls",
+    "ts_ls",
+    "astro",
+    "html",
+    "cssls",
+    "emmet_ls"
+  },
+})
+
+require("lspconfig")
+
+for _, server in ipairs(mason_lsp.get_installed_servers()) do
+  vim.lsp.config(server, {
+    settings = {},
+  })
+
+  vim.lsp.enable(server)
+end
+
+-- ==========
+-- LSP keymap
+-- ==========
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -82,6 +124,10 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
+-- ==============
+-- Autoformatting
+-- ==============
+
 local lsp_format_group = vim.api.nvim_create_augroup("LspAutoFormat", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = lsp_format_group,
@@ -92,18 +138,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
-
----- ===========================
----- Native autocomplete trigger
----- ===========================
---vim.api.nvim_create_autocmd("LspAttach", {
---  callback = function(ev)
---    local client = vim.lsp.get_client_by_id(ev.data.client_id)
---    if client ~= nil and client:supports_method("textDocument/completion") then
---      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
---    end
---  end,
---})
 
 -- ===========================
 -- Best autoformatting at save
