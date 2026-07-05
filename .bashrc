@@ -117,6 +117,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# fnm
+FNM_PATH="/home/henrique/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell bash)"
+fi
+
 # Starship
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 eval "$(starship init bash)"

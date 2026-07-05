@@ -4,7 +4,6 @@ function github_link () {
 
 function install_nvim () {
     DOWNLOAD=$(github_link "neovim" "neovim" "nvim-linux-x86_64.appimage")
-    #DOWNLOAD="https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage"
     TMP_PATH="/tmp/nvim"
     LOCAL_PATH="/usr/local/bin/nvim"
 
@@ -15,7 +14,6 @@ function install_nvim () {
 
 function install_zellij () {
     DOWNLOAD=$(github_link "zellij-org" "zellij" "zellij-x86_64-unknown-linux-musl.tar.gz")
-    #DOWNLOAD="https://github.com/zellij-org/zellij/releases/latest/download/zellij-no-web-aarch64-unknown-linux-musl.tar.gz"
     TMP_PATH="/tmp/zellij-no-web-aarch64-unknown-linux-musl.tar.gz"
     LOCAL_PATH="/usr/local/bin/zellij"
 
@@ -25,6 +23,11 @@ function install_zellij () {
     sudo mv /tmp/zellij ${LOCAL_PATH}
 }
 
+function install_fnm () {
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+}
+
 alias install_nvim='install_nvim'
 alias install_zellij='install_zellij'
+alias install_fnm='install_fnm'
 
