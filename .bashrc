@@ -124,6 +124,11 @@ if [ -d "$FNM_PATH" ]; then
   eval "$(fnm env --shell bash)"
 fi
 
+# QMK
+export QMK_HOME="$HOME/Sources/qmk_firmware"
+
 # Starship
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 eval "$(starship init bash)"
+
+. "$HOME/.local/bin/env"
